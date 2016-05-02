@@ -18,5 +18,5 @@ There are 5 classes: dentxxx.gif  ---- dent damage
 Storing all the data as array may require ~20GB of RAM in MATLAB. 
 
 
-P.S. I wonder if neural network or any classifier could dirrectly use .gif image
+P.S. I wonder if neural network or any classifier could directly use .gif image
 	 as input for training and classification.
