@@ -2,22 +2,20 @@ import numpy as np
 from sklearn.decomposition import PCA
 from sklearn.cross_validation import train_test_split
 
-# create X1 data and label
-X1 = np.loadtxt("slit.txt")
-pca = PCA(n_components=1000)
-pca.fit(X1)
-a = np.size(X1)
-X1_label = np.empty((a / 480 / 640, 1))
-for i in X1_label:
-    X1_label[i] = 0
+damage = np.loadtxt('damage.txt')  # size (500,307200)
 
-# create X2 data and label
-X2 = np.loadtxt("impingement.txt")
-pca = PCA(n_components=1000)
-pca.fit(X2)
-b = np.size(X2)
-X2_label = np.empty((b / 480 / 640, 1))
-for i in X2_label:
-    X2_label[i] = 1
+print(np.shape(damage))
 
-# train and test (not finished)
+pca = PCA(n_components=500)  # it seems that the maximum number of components is 500
+damage_new = pca.fit_transform(damage, y=None) # damage_new is (500,500)
+
+Y = np.empty(500, 1)
+
+for i in range(100):
+    Y[i] = 0
+    Y[i + 100] = 1
+    Y[i + 200] = 2
+    Y[i + 300] = 3
+    Y[i + 400] = 4
+
+X_train, X_test, y_train, y_test = train_test_split(damage_new,Y, test_size=0.25, random_state=42)
