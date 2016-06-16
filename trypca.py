@@ -9,7 +9,7 @@ print(np.shape(damage))
 pca = PCA(n_components=500)  # it seems that the maximum number of components is 500
 damage_new = pca.fit_transform(damage, y=None) # damage_new is (500,500)
 
-Y = np.empty(500, 1)
+Y = np.empty((500, 1))
 
 for i in range(100):
     Y[i] = 0
